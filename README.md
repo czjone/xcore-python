@@ -8,5 +8,8 @@ python3 step.py sdist
 python3 step.py install
 
 # easy step
-## mmac,linux
-
+## mac,linux 
+mkdir simple
+cd simple
+curl -O -L https://raw.githubusercontent.com/czjone/xcore-python/main/install.sh
+sh install.sh
