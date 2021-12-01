@@ -8,4 +8,5 @@ python3 step.py sdist
 python3 step.py install
 
 # easy step
-curl 
+## mmac,linux
+

@@ -1,3 +1,4 @@
+xcore_version="0.3.1"
 ## 显示错误
 function error(){
 	local msg=$1
@@ -45,30 +46,16 @@ function checkResultAndEchoFailMsgAndExit(){
 	fi
 }
 
-# apktool version2.4.0 下载安装: https://ibotpeaches.github.io/Apktool/install/
-# 文档 https://ibotpeaches.github.io/Apktool/documentation/
-apkname=test
-java -jar apktool.jar d ${apkname}.apk
-java -jar apktool.jar b ${apkname} -o ${apkname}1.apk
-# rm -rf ${apkname}
-
-
-# cmd=$1
-# insrc=$2
-# outsrc=$3
-
-# if [[ $cmd == "-dapk" ]]; then
-# 	echo 解包APK
-# elif [[ $cmd == "-capk" ]]; then
-# 	echo 打包apk
-# else
-# 	echo 不知道做什么
-# fi
-
-# # ./flatc -o build/cpp -c --gen-object-api files
-# # generated android message code.
-# sdk_android="../../xv-sdk-android/xv-sdk-adapter/src/main/java/"
-# ./mac-flatc -o ${sdk_android} -j ../APP2Native.fbs ../Native2APP.fbs ../Native2Server.fbs ../Server2Native.fbs ../Errors.fbs
-# checkResultAndEchoFailMsgAndExit $? "生成java失败"
-# ok "生成java成功:${sdk_android}"
-# ok ">>>>>>>>>>> 处理完成 >>>>>>>>"
+filename="xcore-$xcore_version"
+liburl="https://github.com/czjone/xcore-python/releases/download/${xcore_version}/$filename.tar.gz"
+debug "下载:$liburl"
+curl -O -L $liburl
+checkResultAndEchoFailMsgAndExit $? "下载 $liburl 失败"
+tar -zxvf $filename.tar.gz
+checkResultAndEchoFailMsgAndExit $? "解压 $filename 失败"
+cd $filename
+python3 step.py install
+cd ..
+checkResultAndEchoFailMsgAndExit $? "更新 $xcore_version 失败!"
+rm -rf $filename.tar.gz
+debug "更新 $xcore_version 成功!"
