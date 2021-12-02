@@ -2,18 +2,24 @@
 import sys
 import io
 import os
+import shutil
 
 
 class x_file:
 
     @staticmethod
+    def DeleteDir(path:str):
+        shutil.rmtree(path)
+    @staticmethod
     def Write(path: str, val: str) -> bool:
         try:
+            dir = os.path.dirname(path)
+            if os.path.exists(dir) == False:
+                os.makedirs(dir)
             fp = open(path, "w+")
             ret = fp.write(val)
             fp.close()
             return ret == len(val)
-
         except IOError as err:
             return False
 

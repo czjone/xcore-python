@@ -11,3 +11,9 @@ class x_template:
 
     def SaveTo(self,path:str) ->bool:
         return len(path) != x_file.Write(path,self._template)
+
+    def SetNamespace(self,namespace:str)->bool:
+        return True;
+
+    def SetClassName(self,className:str)->bool:
+        return True;
