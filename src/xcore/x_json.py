@@ -5,7 +5,7 @@ from x_file import *
 import json
 
 
-class x_jsonutil:
+class x_json:
 
     @staticmethod
     def LoadFromFile(jsonpath: str) -> any:
@@ -15,7 +15,7 @@ class x_jsonutil:
             x_log.Error("json file is empty:" + jsonpath)
             return None
 
-        return x_jsonutil.LoadFromString(jsontext)
+        return x_json.LoadFromString(jsontext)
 
     @staticmethod
     def LoadFromString(jsontext: str) -> any:

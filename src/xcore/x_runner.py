@@ -1,9 +1,6 @@
-from x_pipeline import pipeline
-
-
 from x_pipeline import *
 
-class Runner:
+class x_runner:
     _pipelines = []
     def __init__(self) -> None:
         pass

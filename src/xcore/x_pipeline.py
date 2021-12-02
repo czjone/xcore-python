@@ -6,7 +6,7 @@ from x_utf8 import *
 import sys
 sys.path.append("..")
 
-class pipeline:
+class x_pipeline:
     
     _conf = None
 
