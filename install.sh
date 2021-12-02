@@ -59,4 +59,4 @@ cd ..
 checkResultAndEchoFailMsgAndExit $? "更新 $xcore_version 失败!"
 rm -rf $filename.tar.gz
 rm -rf $filename
-debug "更新 $xcore_version 成功!"
+ok "更新 $xcore_version 成功!"
