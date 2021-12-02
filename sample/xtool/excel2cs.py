@@ -1,6 +1,10 @@
 from x_pipeline import *
 from x_log import *
-class  excel2cs(pipeline):
+from x_csv import *
+class  excel2cs(x_pipeline):
+
+    _csv:x_csv
+
     def __init__(self,conf) -> None:
         pass
 

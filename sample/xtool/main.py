@@ -11,7 +11,7 @@ from excel2cs import *
 
 # TODO:用参数的方式控制生成方式
 
-class xTool(Runner):
+class xTool(x_runner):
     def __init__(self,conf) -> None:
         self.Register(excel2cs(conf["Excel2Code"]))
         pass
@@ -21,7 +21,7 @@ class xTool(Runner):
         return get_python_lib()
 
 if __name__ == "__main__":
-    conf = x_jsonutil.LoadFromFile("config.json")
+    conf = x_json.LoadFromFile("config.json")
     # x_log.Info(conf);
     # ret = xTool.GetPythonLibPath()
     # # x_log.Info(ret)
