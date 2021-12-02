@@ -29,8 +29,19 @@ class x_file:
             return ""
 
     @staticmethod
-    def ReName(inpath: str, destPath: str) -> None:
+    def ReName(inPath: str, destPath: str) -> None:
         try:
-            os.rename(inpath, destPath)
+            os.rename(inPath, destPath)
         except IOError as err:
             return None
+
+    def GetFiles(inDir:str,pattern:any)->list:
+        list_ret = os.listdir(inDir)  # 列出文件夹下所有的目录与文件
+        for patten in pattern:
+            if len(pattern) > 5:
+                raise "Matching rule length must be less than 5."
+        #只处理0~4字条的扩展名
+        filter_func = lambda path:(path[-1:] in pattern) or (path[-2:] in pattern) or (path[-3:] in pattern) or (path[-4:] in pattern) or (path[-5:] in pattern)
+        # filter_func = lambda path:True
+        return list(filter(filter_func,list_ret))
+        

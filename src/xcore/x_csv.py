@@ -16,13 +16,16 @@ class x_csv:
         self._inpath = inpath
         pass
 
+    def _Check(self):
+        if self._workbook == None:
+            raise "not call load or Create"
+
     def Load(self):
         if os.path.isfile(self._inpath) == True:
             # self._workbook = load_workbook(self._inpath)
             # self._workbook = load_workbook(self._inpath,keep_vba=True,data_only=True); #不能保存vba
             self._workbook = load_workbook(
                 self._inpath, keep_vba=True, data_only=False)  # 能保存vba
-
         else:
             x_log.Error("workbook not exist!")
 
@@ -56,6 +59,7 @@ class x_csv:
         pass
 
     def ModifyCell(self, wsname: str, cellName: str, value):
+        self._Check()
         if self._err != None:
             x_log.Error(self._err)
         ws = self._workbook[wsname]
@@ -71,6 +75,7 @@ class x_csv:
     #     ws.Title = sheetname
 
     def EachRows(self, worksheetname, action):
+        self._Check()
         # columns = ws.max_column;
         ws = self._workbook[worksheetname]
         maxrow = ws.max_row
@@ -83,11 +88,28 @@ class x_csv:
             action(ret)
 
     def AllRows(self, worksheetname) -> any:
+        self._Check()
         rows = []
         def f(x): rows.append(x)
         self.EachRows(worksheetname, f)
         return rows
 
     def SetValue(self, sheet: str, row: int, column: int, value: any):
+        self._Check()
         ws = self._workbook[sheet]
         ws.cell(row, column, value)
+
+    @property
+    def Path(self) ->str:
+        return self._inpath;
+
+    @property
+    def Sheets(self)->list:
+        self._Check()
+        return self._workbook
+
+        
+    @property
+    def SheetNames(self)->list:
+        self._Check()
+        return self._workbook.sheetnames
