@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
-from xcore.x_log import x_log
-from xcore.x_utf8 import x_utf8
+from x_log import x_log
+from x_utf8 import x_utf8
 # from openpyxl import load_workbook
 from openpyxl import *
 import os

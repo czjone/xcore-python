@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
-from xcore.x_utf8 import x_utf8
-from xcore.x_log import x_log
-from xcore.x_file import *
+from x_utf8 import *
+from x_log import *
+from x_file import *
 import json
 
 

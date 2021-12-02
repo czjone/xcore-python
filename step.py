@@ -7,6 +7,6 @@ setup(name='xcore',
       version='0.3.1',
       description='Python extention libs',
       author='solyess',
-      package_dir={'': 'xcore'},
+      package_dir={'': 'src/xcore'},
       packages=[''],
      )

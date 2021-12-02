@@ -1,8 +1,8 @@
 # -*- coding: UTF-8 -*-
 from abc import ABC, abstractmethod
 from typing import Any
-from xcore.x_log import x_log
-from xcore.x_utf8 import x_utf8
+from x_log import *
+from x_utf8 import *
 import sys
 sys.path.append("..")
 
