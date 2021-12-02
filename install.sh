@@ -58,4 +58,5 @@ python3 step.py install
 cd ..
 checkResultAndEchoFailMsgAndExit $? "更新 $xcore_version 失败!"
 rm -rf $filename.tar.gz
+rm -rf $filename
 debug "更新 $xcore_version 成功!"
