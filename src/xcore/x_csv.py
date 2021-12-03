@@ -25,7 +25,7 @@ class x_csv:
             # self._workbook = load_workbook(self._inpath)
             # self._workbook = load_workbook(self._inpath,keep_vba=True,data_only=True); #不能保存vba
             self._workbook = load_workbook(
-                self._inpath, keep_vba=True, data_only=False)  # 能保存vba
+                self._inpath, keep_vba=True, data_only=True)  # 能保存vba
         else:
             x_log.Error("workbook not exist!")
 
@@ -83,9 +83,19 @@ class x_csv:
         for y in range(1, maxrow + 1):
             ret = []
             for x in range(1, maxcolumn + 1):
-                ret.append(ws.cell(row=y, column=x).value)
+                ret.append(ws.cell(row=y, column=x))
                 # x_log.Info(ws.cell(row=y, column=x).value)
-            action(ret)
+            action(y,ret)
+
+    def GetRow(self, worksheetname:str,index:int)->any:
+        self._Check()
+        ws = self._workbook[worksheetname]
+        return ws[index];
+
+    def GetRowValueWith(self, worksheetname:str,excelCell:str)->any:
+        self._Check()
+        ws = self._workbook[worksheetname]
+        return ws[excelCell].value; # excelCell= A1 B2 ...
 
     def AllRows(self, worksheetname) -> any:
         self._Check()

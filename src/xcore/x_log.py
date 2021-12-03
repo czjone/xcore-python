@@ -53,5 +53,10 @@ class x_log():
             raise Exception(message)
 
     @staticmethod
+    def Check(val,expect,message)->None:
+        if not (val == expect):
+            raise Exception(message)
+
+    @staticmethod
     def OutVersion():
         x_log.Info(sys.version)

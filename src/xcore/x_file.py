@@ -9,7 +9,8 @@ class x_file:
 
     @staticmethod
     def DeleteDir(path:str):
-        shutil.rmtree(path)
+        if os.path.exists(path) == True: 
+            shutil.rmtree(path)
     @staticmethod
     def Write(path: str, val: str) -> bool:
         try:
