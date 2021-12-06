@@ -18,5 +18,5 @@ class x_runner:
                 raise Exception(pipeName + ".OnProcess error.")
             if not pipeline.OnAfter():
                 raise Exception(pipeName + ".OnAfter error.")
-            x_log.Ok (pipeName + " complate!")
+            x_log.Ok (pipeName + " complate!")  
         pass
