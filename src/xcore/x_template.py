@@ -139,11 +139,47 @@ class x_json_template(x_template):
 
     #override x_template.ApplyFiled
     def ApplyFiled(self) ->bool:
-        return True;
+        # fields = self._fields
+        # ret = ""
+        # t = "\t\t\t"
+        # ret = ret + t + "\r\n";
+
+        # # 生成字段
+        # for field in fields:
+        #     ret = ret + t + "/// <summary> {} </summary>\r\n".format(field["des"]);
+        #     ret = ret + t + "public {} {} {} get; set; {} \r\n".format(field["type"],field["name"],"{","}");
+        # return self.Replace('$FIELDS$',ret)
+        return True
 
     #override x_template.ApplyConfigData
     def ApplyConfigData(self) ->bool:
-        return True;
+        itemsArray = self._data
+        fields = self._fields
+        ret = ""
+        t = "\t"
+        for itemArray in itemsArray:
+            initFieldCode = ""
+            for item in itemArray:
+                for field in fields:
+                    if field['column_letter'] == item['column_letter'] :
+                        if 'ignore' in field and "lua" in field['ignore']: continue;
+                        type=field["type"]
+                        initFieldCode =  initFieldCode + '"{}" : {},'.format(field['name'],self.GetValue(type, item['val']));
+            initFieldCode = initFieldCode[0:-1]#去掉最后一个逗号
+                
+            ret =  ret + "{} {} {},\r\n".format("{",initFieldCode,"}") + t
+        return self.Replace('$CONF_DATA_LIST$',ret[0:-4]) #去掉最后一个逗号
+
+    def GetValue(self,type:str,val:any)->any:
+        if type == "Int32":
+            return int(val);
+        elif type == "String":
+            if val != None:
+                return '"' + str(val) + '"'
+            else:
+                return "null"
+        else:
+            return None
 
 class x_lua_template(x_template):
     def __init__(self, template: str) -> None:
@@ -159,11 +195,47 @@ class x_lua_template(x_template):
 
     #override x_template.ApplyFiled
     def ApplyFiled(self) ->bool:
-        return True;
+        # fields = self._fields
+        # ret = ""
+        # t = "\t\t\t"
+        # ret = ret + t + "\r\n";
+
+        # # 生成字段
+        # for field in fields:
+        #     ret = ret + t + "/// <summary> {} </summary>\r\n".format(field["des"]);
+        #     ret = ret + t + "public {} {} {} get; set; {} \r\n".format(field["type"],field["name"],"{","}");
+        # return self.Replace('$FIELDS$',ret)
+        return True
 
     #override x_template.ApplyConfigData
     def ApplyConfigData(self) ->bool:
-        return True;
+        itemsArray = self._data
+        fields = self._fields
+        ret = ""
+        t = "\t"
+        for itemArray in itemsArray:
+            initFieldCode = ""
+            for item in itemArray:
+                for field in fields:
+                    if field['column_letter'] == item['column_letter'] :
+                        if 'ignore' in field and "lua" in field['ignore']: continue;
+                        type=field["type"]
+                        initFieldCode =  initFieldCode + '{} = {},'.format(field['name'],self.GetValue(type, item['val']));
+            initFieldCode = initFieldCode[0:-1]#去掉最后一个逗号
+                
+            ret =  ret + "[{}] = {} {} {},\r\n".format(self.GetValue(fields[0]["type"],itemArray[0]["val"]),"{",initFieldCode,"}") + t
+        return self.Replace('$CONF_DATA_LIST$',ret[0:-4]) #去掉最后一个逗号
+
+    def GetValue(self,type:str,val:any)->any:
+        if type == "Int32":
+            return int(val);
+        elif type == "String":
+            if val != None:
+                return '"' + str(val) + '"'
+            else:
+                return "null"
+        else:
+            return None
 
 class x_cpp_template(x_template):
     def __init__(self, template: str) -> None:
