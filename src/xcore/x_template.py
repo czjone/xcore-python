@@ -102,15 +102,19 @@ class x_csharp_template(x_template):
         fields = self._fields
         ret = ""
         t = "\t\t\t"
+        firstType = None;
         for itemArray in itemsArray:
             initFieldCode = ""
             for item in itemArray:
                 for field in fields:
                     if field['column_letter'] == item['column_letter'] :
                         if 'ignore' in field and "cs" in field['ignore']: continue;
+                        if firstType == None:
+                            firstType=field["type"]
                         type=field["type"]
                         initFieldCode =  initFieldCode + "{} = {},".format(field['name'],self.GetValue(type, item['val']));
             ret =  ret + "{}{},new Item(){} {} {}{},\r\n".format("{",self.GetValue(fields[0]["type"],itemArray[0]["val"]),"{",initFieldCode,"}","}") + t
+            self.Replace('$CONF_DATA_LIST_FIRST_TYPE$',firstType);
         return self.Replace('$CONF_DATA_LIST$',ret)
 
     def GetValue(self,type:str,val:any)->any:
