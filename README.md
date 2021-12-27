@@ -2,7 +2,7 @@
 
 python base classes of xtool
 
-# build lib
+# build lib (only suppots:osx)
 python3 step.py sdist
 
 # install lib
