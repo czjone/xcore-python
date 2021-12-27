@@ -4,7 +4,7 @@
 from distutils.core import setup
 
 setup(name='xcore',
-      version='0.3.1',
+      version='0.3.2',
       description='Python extention libs',
       author='solyess',
       package_dir={'': 'src/xcore'},

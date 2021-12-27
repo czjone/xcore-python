@@ -27,7 +27,7 @@ class x_file:
     @staticmethod
     def Read(path: str) -> str:
         try:
-            fp = open(path, ，encoding= "utf-8",mode = "r")
+            fp = open(path, encoding= "utf-8",mode = "r")
             ret = fp.read()
             fp.close()
             return ret

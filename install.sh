@@ -1,4 +1,4 @@
-xcore_version="0.3.1" #修改版本号可以更新到任意版本
+xcore_version="0.3.2" #修改版本号可以更新到任意版本
 ## 显示错误
 function error(){
 	local msg=$1
