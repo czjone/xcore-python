@@ -17,7 +17,7 @@ class x_file:
             dir = os.path.dirname(path)
             if os.path.exists(dir) == False:
                 os.makedirs(dir)
-            fp = open(path, "w+")
+            fp = open(path, encoding= "utf-8",mode = "w+")
             ret = fp.write(val)
             fp.close()
             return ret == len(val)
