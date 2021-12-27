@@ -6,7 +6,7 @@
 @tar -zxvf %filename%.tar.gz
 @cd %filename%
 @python step.py install
-@REM @cd ..
+@cd ..
 @del %filename%.tar.gz
 @rd /s/q build
 @rd /s/q %filename%
