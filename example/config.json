@@ -1,0 +1,36 @@
+{
+    "Excel2Code": 
+        {   
+            "Language-des1":"支持生成的语言,如果字段没有配置，\"{\"经验:B\":\"Exp:Int32:CS|Json\"}\",生成除CS、json文件的所有",
+            "Excel-des2":"生成数据配置",
+
+            "InDir":"../Doc/",
+            "OutDir":"../SolitaireJigsaw/Assets/Scripts/Auto-Code/",
+            "Namespace":"HGame.Configure",
+            "Language":"cs|json",
+            "Excel":{
+                "离散表": {
+                    "out":"Discrete",
+                    "field":[
+                        {"关键字:A":"Key:String"},
+                        {"数据:B":"Value:Int32"}
+                    ]
+                },
+                "等级设置": {
+                    "out":"LV",
+                    "field":[
+                        {"编号:A":"Id:Int32"},
+                        {"经验:B":"Exp:Int32"}
+                    ]
+                },
+                "普通关卡(翻单张)": {
+                    "out":"Levels",
+                    "field":[
+                        {"编号:A":"Id:Int32"},
+                        {"牌局设置:B":"Level:String"}
+                    ]
+                }
+            }
+        }
+    
+}

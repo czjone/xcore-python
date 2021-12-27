@@ -5,15 +5,13 @@ from distutils.sysconfig import *
 from x_runner import *
 from x_log import *
 from x_json import *
-from excel2cs import excel2cs
-
-from excel2cs import *
+from excel2code import *
 
 # TODO:用参数的方式控制生成方式
 
 class xTool(x_runner):
     def __init__(self,conf) -> None:
-        self.Register(excel2cs(conf["Excel2Code"]))
+        self.Register(excel2code(conf["Excel2Code"]))
         pass
 
     @staticmethod

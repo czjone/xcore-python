@@ -5,8 +5,16 @@
 # 依赖库
 - https://github.com/czjone/xcore-python
 
-# 快速安装依赖库
+# Mac、linux
+## 快速安装依赖库
     sh reinstall-xcore.sh
 
-# 运行
+## 运行
     sh xtool.sh
+
+# windows
+## 快速安装依赖库
+    reinstall-xcore.bat
+
+## 运行
+    xtool.bat
