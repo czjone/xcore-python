@@ -92,8 +92,8 @@ class x_csharp_template(x_template):
 
         # 生成字段
         for field in fields:
-            # ret = ret + t + "/// <summary> {} </summary>\r\n".format(field["des"]);
-            ret = ret + t + "public {} {} {} get; set; {} \r\n".format(field["type"],field["name"],"{","}");
+            # ret = ret + t + "/// <summary> {} </summary>\n".format(field["des"]);
+            ret = ret + t + "public {} {} {} get; set; {} \n".format(field["type"],field["name"],"{","}");
         return self.Replace('$FIELDS$',ret)
 
     #override x_template.ApplyConfigData
