@@ -113,7 +113,7 @@ class x_csharp_template(x_template):
                             firstType=field["type"]
                         type=field["type"]
                         initFieldCode =  initFieldCode + "{} = {},".format(field['name'],self.GetValue(type, item['val']));
-            ret =  ret + "{}{},new Item(){} {} {}{},\r\n".format("{",self.GetValue(fields[0]["type"],itemArray[0]["val"]),"{",initFieldCode,"}","}") + t
+            ret =  ret + "{}{},new Item(){} {} {}{},\n".format("{",self.GetValue(fields[0]["type"],itemArray[0]["val"]),"{",initFieldCode,"}","}") + t
             self.Replace('$CONF_DATA_LIST_FIRST_TYPE$',firstType);
         return self.Replace('$CONF_DATA_LIST$',ret)
 
