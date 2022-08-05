@@ -46,6 +46,7 @@ function checkResultAndEchoFailMsgAndExit(){
 	fi
 }
 
+# install xcore
 filename="xcore-$xcore_version"
 liburl="https://github.com/czjone/xcore-python/releases/download/${xcore_version}/$filename.tar.gz"
 debug "下载:$liburl"
@@ -59,4 +60,20 @@ cd ..
 checkResultAndEchoFailMsgAndExit $? "更新 $xcore_version 失败!"
 rm -rf $filename.tar.gz
 rm -rf $filename
+
+# install translator
+filename="xcore-$xcore_version"
+liburl="https://github.com/czjone/xcore-python/releases/download/${xcore_version}/$filename.tar.gz"
+debug "下载:$liburl"
+curl -O -L $liburl
+checkResultAndEchoFailMsgAndExit $? "下载 $liburl 失败"
+tar -zxvf $filename.tar.gz
+checkResultAndEchoFailMsgAndExit $? "解压 $filename 失败"
+cd $filename
+python3 step.py install
+cd ..
+checkResultAndEchoFailMsgAndExit $? "更新 $xcore_version 失败!"
+rm -rf $filename.tar.gz
+rm -rf $filename
+
 ok "更新 $xcore_version 成功!"
