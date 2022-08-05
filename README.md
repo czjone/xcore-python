@@ -1,6 +1,6 @@
 # xcore-python
 
-python base classes of xtool
+python base classes for xtool
 
 # build lib (only suppots:osx)
 python3 step.py sdist
