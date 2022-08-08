@@ -24,8 +24,13 @@ class x_csv:
         if os.path.isfile(self._inpath) == True:
             # self._workbook = load_workbook(self._inpath)
             # self._workbook = load_workbook(self._inpath,keep_vba=True,data_only=True); #不能保存vba
+
+            # self._workbook = load_workbook(
+            #     self._inpath, keep_vba=True, data_only=True)  # 能保存vba
+            keep_vba = self._inpath.lower().endswith("xlsm");
             self._workbook = load_workbook(
-                self._inpath, keep_vba=True, data_only=True)  # 能保存vba
+                self._inpath, keep_vba=keep_vba, data_only=True)  # 能保存vba
+
         else:
             x_log.Error("workbook not exist!")
 

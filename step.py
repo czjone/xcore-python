@@ -16,12 +16,12 @@ setup(name='xcore',
      )
 
 
-setup(name='translator',
-      version=version,
-      description='Python extention libs',
-      author='solyess',
-      package_dir={
-      '': 'src/translator'
-      },
-      packages=[''],
-     )
+# setup(name='translator',
+#       version=version,
+#       description='Python extention libs',
+#       author='solyess',
+#       package_dir={
+#       '': 'src/translator'
+#       },
+#       packages=[''],
+#      )
