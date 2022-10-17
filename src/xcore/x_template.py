@@ -171,8 +171,8 @@ class x_json_template(x_template):
                         initFieldCode =  initFieldCode + '"{}" : {},'.format(field['name'],self.GetValue(type, item['val']));
             initFieldCode = initFieldCode[0:-1]#去掉最后一个逗号
                 
-            ret =  ret + "{} {} {},\r\n".format("{",initFieldCode,"}") + t
-        return self.Replace('$CONF_DATA_LIST$',ret[0:-4]) #去掉最后一个逗号
+            ret =  ret + "{} {} {},\n".format("{",initFieldCode,"}") + t
+        return self.Replace('$CONF_DATA_LIST$',ret[0:-3]) #去掉最后一个逗号
 
     def GetValue(self,type:str,val:any)->any:
         if type == "Int32":
