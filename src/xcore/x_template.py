@@ -176,7 +176,10 @@ class x_json_template(x_template):
 
     def GetValue(self,type:str,val:any)->any:
         if type == "Int32":
-            return int(val);
+            try:
+                return int(val)
+            except:
+                x_log.Info(val + "无法转换成Int");
         elif type == "String":
             if val != None:
                 return '"' + str(val) + '"'
