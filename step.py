@@ -3,7 +3,7 @@
 
 from distutils.core import setup
 
-version ='0.3.3'
+version ='0.3.5'
 
 setup(name='xcore',
       version=version,
