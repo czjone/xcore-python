@@ -168,6 +168,7 @@ class x_json_template(x_template):
                     if field['column_letter'] == item['column_letter'] :
                         if 'ignore' in field and "lua" in field['ignore']: continue;
                         type=field["type"]
+                        if self.GetValue(type, item['val']) == None: continue;
                         initFieldCode =  initFieldCode + '"{}" : {},'.format(field['name'],self.GetValue(type, item['val']));
             initFieldCode = initFieldCode[0:-1]#去掉最后一个逗号
                 
